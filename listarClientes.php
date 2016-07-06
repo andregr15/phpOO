@@ -29,9 +29,7 @@ $clientes = array(
 				  cursor:pointer;
 				  }
 
-					td{
-				  cursor:pointer;
-				  }
+
 
 			  </style>
 	</head>
@@ -61,7 +59,7 @@ $clientes = array(
 
 					   	foreach($clientes as $cliente)
 							{
-								echo "<tr><td>".$cliente->getId()."</td><td>".$cliente->getNome()."</td><td>".$cliente->getCpf()."</td><td>".$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td></tr>";
+								echo "<tr><td onClick=\"infoCliente('".$cliente->getId()."','".$cliente->getNome()."','".$cliente->getCpf()."','".$cliente->getEndereco()."','".$cliente->getCidade()."')\">".$cliente->getId()."</td><td>".$cliente->getNome()."</td><td>".$cliente->getCpf()."</td><td>".$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td></tr>";
 							}
 
 					  ?>
@@ -72,8 +70,11 @@ $clientes = array(
 	            $(document).ready(function()
 	            {
 	                $("#myTable").tablesorter();
-	            }
-	        );
+	            });
+
+              function infoCliente(id, nome, cpf, endereco, cidade){
+                   alert('Id: '+ id +' Nome: '+ nome +' CPF: ' + cpf + ' Endereço: ' + endereco + ' Cidade: ' + cidade);
+                  }
         </script>
 
 			</div>
