@@ -61,9 +61,9 @@ $clientes = array(
 					   	foreach($clientes as $cliente)
 							{
 								echo "<tr><td onClick=\"infoCliente('".$cliente->getId()."','".$cliente->getNome()."','"
-                .($cliente instanceof ClientePessoaJuridica ? $cliente->getCnpj() : $cliente->getCpf())."','".$cliente->getEndereco()."','".$cliente->getCidade()."','".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Fisíca")."')\">"
+                .($cliente instanceof ClientePessoaJuridica ? $cliente->getCnpj() : $cliente->getCpf())."','".$cliente->getEndereco()."','".$cliente->getCidade()."','".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Física")."')\">"
                 .$cliente->getId()."</td><td>".$cliente->getNome()."</td><td>".($cliente instanceof ClientePessoaJuridica ? $cliente->getCnpj() : $cliente->getCpf())."</td><td>"
-                .$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td><td>".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Fisíca")."</td></tr>";
+                .$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td><td>".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Física")."</td></tr>";
 							}
 
 					  ?>
