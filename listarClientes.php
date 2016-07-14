@@ -1,17 +1,19 @@
 <?php
-require_once ("cliente.php");
+//require_once ("cliente.php");
+require_once ("clientePessoaFisica.php");
+require_once ("clientePessoaJuridica.php");
 
 $clientes = array(
-  new Cliente (5, "Larissa", "3219603247", "Rua d, numero 8", "São João da Boa Vista"),
-	new Cliente (2, "Gabriel", "98543205", "Rua t, numero 30", "São Paulo"),
-	new Cliente (3, "Joel", "123423574", "Rua y, numero 500", "Caldas"),
-	new Cliente (1, "André", "123456789", "Rua x, numero 21", "Poços de Caldas"),
-  new Cliente (9, "Lucas", "5410981032", "Rua i, numero 985", "Campinas"),
-	new Cliente (6, "Talita", "864035240", "Rua a, numero 2510", "Poços de Caldas"),
-  new Cliente (4, "Juliana", "351951324", "Rua o, numero 5", "Porto Alegre"),
-	new Cliente (7, "Sandra", "321068103", "Rua e, numero 50", "Fortaleza"),
-  new Cliente (10, "Rose", "3209810327", "Rua p, numero 70", "Poços de Caldas"),
-	new Cliente (8, "Silas", "32106801321", "Rua t, numero 25", "Pinhal")
+  new ClientePessoaFisica (5, "Larissa", "Rua d, numero 8", "São João da Boa Vista", "3219603247"),
+	new ClientePessoaJuridica (2, "Gabriel", "Rua t, numero 30", "São Paulo", "9854320501254863"),
+	new ClientePessoaFisica (3, "Joel", "Rua y, numero 500", "Caldas", "123423574"),
+	new ClientePessoaFisica (1, "André", "Rua x, numero 21", "Poços de Caldas", "123456789"),
+  new ClientePessoaJuridica (9, "Lucas", "Rua i, numero 985", "Campinas", "5410981032"),
+	new ClientePessoaJuridica (6, "Talita", "Rua a, numero 2510", "Poços de Caldas", "864035240"),
+  new ClientePessoaJuridica (4, "Juliana", "Rua o, numero 5", "Porto Alegre", "351951324"),
+	new ClientePessoaFisica (7, "Sandra", "Rua e, numero 50", "Fortaleza", "321068103"),
+  new ClientePessoaJuridica (10, "Rose", "Rua p, numero 70", "Poços de Caldas", "3209810327"),
+	new ClientePessoaFisica (8, "Silas", "Rua t, numero 25", "Pinhal", "32106801321")
 );
 
 ?>
@@ -28,8 +30,6 @@ $clientes = array(
 				  th{
 				  cursor:pointer;
 				  }
-
-
 
 			  </style>
 	</head>
@@ -49,9 +49,10 @@ $clientes = array(
                 <tr>
                     <th>id</th>
                     <th>Nome</th>
-                    <th>CPF</th>
+                    <th>CPF/CNPJ</th>
                     <th>Endereço</th>
 										<th>Cidade</th>
+                    <th>Tipo</th>
                 </tr>
             </thead>
 						<tbody>
@@ -59,7 +60,10 @@ $clientes = array(
 
 					   	foreach($clientes as $cliente)
 							{
-								echo "<tr><td onClick=\"infoCliente('".$cliente->getId()."','".$cliente->getNome()."','".$cliente->getCpf()."','".$cliente->getEndereco()."','".$cliente->getCidade()."')\">".$cliente->getId()."</td><td>".$cliente->getNome()."</td><td>".$cliente->getCpf()."</td><td>".$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td></tr>";
+								echo "<tr><td onClick=\"infoCliente('".$cliente->getId()."','".$cliente->getNome()."','"
+                .($cliente instanceof ClientePessoaJuridica ? $cliente->getCnpj() : $cliente->getCpf())."','".$cliente->getEndereco()."','".$cliente->getCidade()."','".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Fisíca")."')\">"
+                .$cliente->getId()."</td><td>".$cliente->getNome()."</td><td>".($cliente instanceof ClientePessoaJuridica ? $cliente->getCnpj() : $cliente->getCpf())."</td><td>"
+                .$cliente->getEndereco()."</td><td>".$cliente->getCidade()."</td><td>".($cliente instanceof ClientePessoaJuridica ? "Jurídica" : "Fisíca")."</td></tr>";
 							}
 
 					  ?>
@@ -72,8 +76,8 @@ $clientes = array(
 	                $("#myTable").tablesorter();
 	            });
 
-              function infoCliente(id, nome, cpf, endereco, cidade){
-                   alert('Id: '+ id +' Nome: '+ nome +' CPF: ' + cpf + ' Endereço: ' + endereco + ' Cidade: ' + cidade);
+              function infoCliente(id, nome, cpf, endereco, cidade, tipo){
+                   alert('Id: '+ id +' Nome: '+ nome +' CPF/CNPJ: ' + cpf + ' Endereço: ' + endereco + ' Cidade: ' + cidade + ' Tipo: ' + tipo);
                   }
         </script>
 

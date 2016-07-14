@@ -1,18 +1,20 @@
 <?php
+require_once "enderecoCobranca.php";
+require_once "grauImportancia.php";
 
-class Cliente
+class Cliente implements EnderecoCobranca, GrauImportancia
 {
   private $id;
   private $nome;
-  private $cpf;
   private $endereco;
   private $cidade;
+  private $enderecoCobranca;
+  private $grauImportancia;
 
-  function __construct($id, $nome, $cpf, $endereco, $cidade)
+  function __construct($id, $nome, $endereco, $cidade)
   {
     $this->id = $id;
     $this->nome = $nome;
-    $this->cpf = $cpf;
     $this->endereco = $endereco;
     $this->cidade = $cidade;
   }
@@ -27,11 +29,6 @@ class Cliente
     return $this->nome;
   }
 
-  public function getCpf()
-  {
-    return $this->cpf;
-  }
-
   public function getEndereco()
   {
     return $this->endereco;
@@ -41,6 +38,27 @@ class Cliente
   {
     return $this->cidade;
   }
+
+  public function setEnderecoCobranca($enderecoCobranca)
+  {
+    $this->enderecoCobranca = $enderecoCobranca;
+  }
+
+  public function getEnderecoCobranca()
+  {
+    return $this->enderecoCobranca;
+  }
+
+  public function setGrauImportancia($grauImportancia)
+  {
+    $this->grauImportancia = $grauImportancia;
+  }
+
+  public function getGrauImportancia()
+  {
+    return $this->grauImportancia;
+  }
+
 }
 
 
