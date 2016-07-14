@@ -1,6 +1,7 @@
 <?php
+namespace AGR\Interfaces;
 
-interface GrauImportancia
+interface GrauImportanciaInterface
 {
   public function getGrauImportancia();
   public function setGrauImportancia($grauImportancia);

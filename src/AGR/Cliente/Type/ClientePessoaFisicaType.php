@@ -1,10 +1,10 @@
 <?php
 
-require_once "cliente.php";
-require_once "enderecoCobranca.php";
-require_once "grauImportancia.php";
+namespace AGR\Cliente\Types;
 
-class ClientePessoaFisica extends Cliente implements EnderecoCobranca, GrauImportancia
+use AGR\Cliente\ClienteAbstract;
+
+class ClientePessoaFisicaType extends ClienteAbstract
 {
   private $cpf;
 
