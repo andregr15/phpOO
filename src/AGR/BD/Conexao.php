@@ -106,7 +106,7 @@ class Conexao
       	new ClientePessoaFisicaType (7, "Sandra", "Rua e, numero 50", "Fortaleza", "321068103"),
         new ClientePessoaJuridicaType (10, "Rose", "Rua p, numero 70", "Poços de Caldas", "3209810327"),
       	new ClientePessoaFisicaType (8, "Silas", "Rua t, numero 25", "Pinhal", "32106801321"),
-        new ClientePessoaFisicaType (11, "Luiz", "Rua t, numero 78", "S", "32168103217")
+        new ClientePessoaJuridicaType (11, "Luiz", "Rua t, numero 78", "São João Da Boa Vista", "32168103217")
       );
 
       foreach($clientes as $cliente)
